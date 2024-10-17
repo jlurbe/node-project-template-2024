@@ -1,5 +1,11 @@
-import { add } from './utils'
+import express from 'express'
+import dotenv from 'dotenv'
 
-console.log('sum', add(1, 2))
+dotenv.config()
 
-console.log('debug', process.env.APP_DEBUG)
+const app = express()
+const port = process.env.PORT || 3000
+if (port === 3000) console.log(`Listening on port ${port}`)
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
